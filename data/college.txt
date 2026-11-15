@@ -1,0 +1,35 @@
+# College campus network
+# DEVICE <name> <type> <x> <y>     (x y = position on the map grid, optional)
+# LINK <device1> <device2> <latency in ms>
+NAME College Campus
+DEVICE ISP router 6 0
+DEVICE Firewall firewall 6 1
+DEVICE CoreRouter router 4 2
+DEVICE BackupRouter router 8 2
+DEVICE LabSwitch switch 2 4
+DEVICE LibrarySwitch switch 6 4
+DEVICE AdminSwitch switch 10 4
+DEVICE Lab_PC1 pc 0 6
+DEVICE Lab_PC2 pc 2 6
+DEVICE DataServer server 4 6
+DEVICE Library_PC pc 6 6
+DEVICE WiFi_AP ap 8 6
+DEVICE Admin_PC pc 10 6
+DEVICE Printer printer 12 6
+LINK ISP Firewall 2
+LINK Firewall CoreRouter 1
+LINK Firewall BackupRouter 2
+LINK CoreRouter BackupRouter 1
+LINK CoreRouter LabSwitch 2
+LINK CoreRouter LibrarySwitch 2
+LINK BackupRouter LibrarySwitch 3
+LINK BackupRouter AdminSwitch 2
+LINK LabSwitch LibrarySwitch 4
+LINK LabSwitch Lab_PC1 1
+LINK LabSwitch Lab_PC2 1
+LINK LabSwitch DataServer 2
+LINK LibrarySwitch DataServer 1
+LINK LibrarySwitch Library_PC 1
+LINK LibrarySwitch WiFi_AP 2
+LINK AdminSwitch Admin_PC 1
+LINK AdminSwitch Printer 2

@@ -1,0 +1,31 @@
+# Hospital network - two gateways so internet does not go down easily
+NAME City Hospital
+DEVICE Internet router 6 0
+DEVICE Gateway1 router 4 1
+DEVICE Gateway2 router 8 1
+DEVICE CoreSwitch switch 6 3
+DEVICE ICU_Switch switch 2 4
+DEVICE OPD_Switch switch 10 4
+DEVICE WardSwitch switch 6 5
+DEVICE RecordsServer server 6 7
+DEVICE ICU_Monitor pc 1 6
+DEVICE ICU_PC pc 3 6
+DEVICE Pharmacy_PC pc 4 7
+DEVICE Ward_AP ap 8 7
+DEVICE Reception_PC pc 9 6
+DEVICE OPD_Printer printer 11 6
+LINK Internet Gateway1 3
+LINK Internet Gateway2 3
+LINK Gateway1 CoreSwitch 1
+LINK Gateway2 CoreSwitch 1
+LINK Gateway1 ICU_Switch 2
+LINK CoreSwitch ICU_Switch 1
+LINK CoreSwitch OPD_Switch 2
+LINK CoreSwitch WardSwitch 1
+LINK WardSwitch RecordsServer 1
+LINK WardSwitch Pharmacy_PC 2
+LINK WardSwitch Ward_AP 2
+LINK ICU_Switch ICU_Monitor 1
+LINK ICU_Switch ICU_PC 1
+LINK OPD_Switch Reception_PC 1
+LINK OPD_Switch OPD_Printer 2

@@ -1,0 +1,18 @@
+# Small office network (the first test network we made)
+NAME Small Office
+DEVICE Router1 router 6 0
+DEVICE Switch1 switch 3 2
+DEVICE Switch2 switch 9 2
+DEVICE Printer1 printer 1 4
+DEVICE Server1 server 6 4
+DEVICE Switch3 switch 10 4
+DEVICE PC1 pc 9 6
+DEVICE PC2 pc 11 6
+LINK Router1 Switch1 5
+LINK Router1 Switch2 7
+LINK Switch1 Server1 2
+LINK Switch2 Server1 4
+LINK Switch2 Switch3 3
+LINK Switch3 PC1 1
+LINK Switch3 PC2 1
+LINK Switch1 Printer1 2

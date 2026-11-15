@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network Failure Analyzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- title screen -->
+<div id="start" class="start">
+  <div class="start-box">
+    <canvas id="start-art" width="168" height="72" aria-hidden="true"></canvas>
+    <h1 class="logo">Network<br>Failure<br>Analyzer</h1>
+    <p class="start-sub">Break parts of a network on purpose and watch what goes dark.</p>
+    <button id="start-btn" class="btn big blink">Press start</button>
+    <p class="credits">FODS course project by Shivam Gaikwad and Jiteesh Ghodke</p>
+  </div>
+</div>
+
+<header class="hud">
+  <div class="hud-title">
+    <span class="logo small">NFA</span>
+    <div>
+      <div id="net-name" class="net-name">Loading…</div>
+      <div class="hp">
+        <span class="hp-label">Health</span>
+        <div id="hp-bar" class="hp-bar" role="meter" aria-label="Network health" aria-valuemin="0" aria-valuemax="100"></div>
+        <span id="hp-num" class="hp-num">–</span>
+      </div>
+    </div>
+  </div>
+  <dl class="hud-stats">
+    <div><dt>Devices up</dt><dd id="st-dev">–</dd></div>
+    <div><dt>Links up</dt><dd id="st-link">–</dd></div>
+    <div><dt>Groups</dt><dd id="st-groups">–</dd></div>
+    <div><dt>Cut off</dt><dd id="st-cut">–</dd></div>
+    <div><dt>Severity</dt><dd><span id="st-sev" class="sev">–</span></dd></div>
+  </dl>
+  <button id="sound-btn" class="btn icon" aria-pressed="true" title="Sound on/off">♪</button>
+</header>
+
+<main class="game">
+  <section class="map-wrap">
+    <canvas id="map" aria-label="Network map. Click a device or a cable to select it."></canvas>
+    <div id="map-hint" class="map-hint"></div>
+    <button id="untangle-btn" class="btn sky map-btn" aria-pressed="false" title="Re-arrange the map so fewer cables cross">Untangle</button>
+    <div class="dialog" aria-live="polite">
+      <canvas id="bot" width="48" height="48" aria-hidden="true"></canvas>
+      <p id="dialog-text">Booting up…</p>
+    </div>
+  </section>
+
+  <aside class="side">
+    <nav class="tabs" role="tablist">
+      <button role="tab" class="tab active" data-tab="control" aria-selected="true">Control</button>
+      <button role="tab" class="tab" data-tab="route" aria-selected="false">Route</button>
+      <button role="tab" class="tab" data-tab="intel" aria-selected="false">Intel</button>
+      <button role="tab" class="tab" data-tab="log" aria-selected="false">Log</button>
+    </nav>
+
+    <!-- CONTROL -->
+    <div class="pane" id="pane-control">
+      <div class="box" id="selected-box">
+        <h2>Selected</h2>
+        <div id="selected-body" class="muted">Click a device or a cable on the map.</div>
+      </div>
+
+      <div class="row">
+        <button id="undo-btn" class="btn sky">Undo last failure</button>
+        <button id="restore-all-btn" class="btn sky">Repair everything</button>
+      </div>
+
+      <div class="box">
+        <h2>Network</h2>
+        <div class="row">
+          <select id="net-select" aria-label="Network file"></select>
+          <button id="load-btn" class="btn">Load</button>
+          <button id="save-btn" class="btn sky">Save</button>
+        </div>
+      </div>
+
+      <details class="box">
+        <summary>Add a device</summary>
+        <form id="add-device-form" class="form">
+          <label>Name <input name="name" required maxlength="20" pattern="[A-Za-z0-9_\-]+" placeholder="Lab_PC3"></label>
+          <label>Type
+            <select name="type">
+              <option value="pc">PC</option><option value="switch">Switch</option><option value="router">Router</option>
+              <option value="server">Server</option><option value="printer">Printer</option><option value="ap">Wi-Fi AP</option>
+              <option value="firewall">Firewall</option>
+            </select>
+          </label>
+          <button class="btn">Add device</button>
+        </form>
+      </details>
+
+      <details class="box">
+        <summary>Add a cable</summary>
+        <form id="add-link-form" class="form">
+          <label>From <select name="a" class="dev-select"></select></label>
+          <label>To <select name="b" class="dev-select"></select></label>
+          <label>Latency (ms) <input name="latency" type="number" min="1" max="999" value="2" required></label>
+          <button class="btn">Add cable</button>
+        </form>
+      </details>
+      <p class="keys">Keys: <kbd>F</kbd> fail or repair selected, <kbd>U</kbd> undo, <kbd>Esc</kbd> clear.</p>
+    </div>
+
+    <!-- ROUTE -->
+    <div class="pane hidden" id="pane-route">
+      <div class="box">
+        <h2>Find a route</h2>
+        <p class="muted">Dijkstra picks the lowest total latency. Backtracking lists the other routes.</p>
+        <form id="route-form" class="form">
+          <label>From <select name="from" class="dev-select"></select></label>
+          <label>To <select name="to" class="dev-select"></select></label>
+          <div class="row">
+            <button class="btn">Find route</button>
+            <button type="button" id="clear-route" class="btn sky">Clear</button>
+          </div>
+        </form>
+      </div>
+      <div id="route-result"></div>
+    </div>
+
+    <!-- INTEL -->
+    <div class="pane hidden" id="pane-intel">
+      <div class="box">
+        <h2>Single points of failure</h2>
+        <p class="muted">Found with Tarjan's algorithm. If one of these goes down, the network splits.</p>
+        <div id="crit-list" class="chips"></div>
+        <h3>Bridge cables</h3>
+        <div id="bridge-list" class="chips"></div>
+      </div>
+      <div class="box">
+        <h2>Impact ranking</h2>
+        <p class="muted">Devices that would lose connection if this one failed.</p>
+        <ol id="rank-list" class="rank"></ol>
+      </div>
+      <div class="box">
+        <h2>Planned maintenance</h2>
+        <p class="muted">List cables in the order you will unplug them. Binary search with union-find (DSU) finds the first step that splits the network.</p>
+        <div class="row"><select id="plan-select" aria-label="Cable to add"></select><button id="plan-add" class="btn sky">Add</button></div>
+        <ol id="plan-list" class="plan"></ol>
+        <div class="row"><button id="plan-run" class="btn">Find breaking point</button><button id="plan-clear" class="btn sky">Clear plan</button></div>
+        <div id="plan-result"></div>
+      </div>
+      <div class="box">
+        <h2>Groups</h2>
+        <p class="muted">Connected groups found with DFS.</p>
+        <div id="group-list"></div>
+        <p id="density-line" class="group"></p>
+      </div>
+    </div>
+
+    <!-- LOG -->
+    <div class="pane hidden" id="pane-log">
+      <div class="box">
+        <h2>Event log</h2>
+        <ol id="log-list" class="log" reversed></ol>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<script src="analyzer.js"></script>
+<script>window.NFA_READY = createAnalyzer().then(function (m) { window.NFA_WASM = function (path, query) { return m.ccall("handle_api", "string", ["string", "string"], [path, query]); }; });</script>
+<script src="app.js"></script>
+</body>
+</html>
