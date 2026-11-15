@@ -31,7 +31,7 @@ Core API endpoints use `locationId` as a query parameter: `GET /api/locations`, 
 With the server running, exercise the main integration flow using `.\scripts\verify-api.ps1`. The script creates and removes a temporary location while checking routing, critical-device detection, failure isolation, restoration, and JSON persistence.
 
 ---
-# Network Failure Analyzer — Cybersecurity Web Dashboard
+# Network Failure Analyzer — Web Dashboard
 
 A modern, interactive, cybersecurity-themed Network Operations Center (NOC) and Security Operations Center (SOC) dashboard built on top of a high-performance **C++ Graph & Network Failure Engine**.
 
