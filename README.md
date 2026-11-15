@@ -141,7 +141,7 @@ g++ -std=c++11 -pthread -Ibackend main.cpp -o analyzer.exe -lws2_32
 
 ## 🚀 Execution & Usage
 
-### Option A: Running the Cybersecurity Web Dashboard (Recommended)
+### Option A: Running the Web Dashboard (Recommended)
 
 1. **Build and start the C++ HTTP Backend**:
    ```powershell
@@ -152,6 +152,7 @@ g++ -std=c++11 -pthread -Ibackend main.cpp -o analyzer.exe -lws2_32
    Open:
    ```
    http://localhost:8080
+   
    ```
    *(Or run: `Start-Process "http://localhost:8080"`)*
 
@@ -257,6 +258,6 @@ All required test scenarios have been programmatically executed against `server.
 Developed for the **Network Failure Analyzer** C++ Project Assignment.
 Engineered using C++11, `cpp-httplib`, `nlohmann/json`, Cytoscape.js, and Chart.js.
 
-=======
+
 # FODS-CP
 
