@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Current multi-location implementation
 
 The reusable C++ graph engine is in `cpp/Network.h`, and the REST server in `backend/server.cpp` is the shared source of truth for the browser and terminal. `main.cpp` is an interactive terminal client of that API, so terminal changes are saved to the same location data that the web dashboard reads. The original offline CLI is preserved in `cpp/legacy_cli.cpp`. The REST service creates independent network snapshots under `data/locations/<id>/network.json`.
@@ -257,3 +258,6 @@ All required test scenarios have been programmatically executed against `server.
 Developed for the **Network Failure Analyzer** C++ Project Assignment.
 Engineered using C++11, `cpp-httplib`, `nlohmann/json`, Cytoscape.js, and Chart.js.
 
+=======
+# FODS-CP
+>>>>>>> dc54d32f14e738637ca1c8ec975f557c46fba474
