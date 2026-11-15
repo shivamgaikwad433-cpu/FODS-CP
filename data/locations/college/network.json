@@ -1,0 +1,119 @@
+{
+  "connections": [
+    {
+      "id": "link1",
+      "latency": 4,
+      "source": "Router1",
+      "status": "active",
+      "target": "Router2"
+    },
+    {
+      "id": "link2",
+      "latency": 2,
+      "source": "Router1",
+      "status": "active",
+      "target": "Switch1"
+    },
+    {
+      "id": "link3",
+      "latency": 2,
+      "source": "Router2",
+      "status": "active",
+      "target": "Switch2"
+    },
+    {
+      "id": "link4",
+      "latency": 1,
+      "source": "Switch1",
+      "status": "active",
+      "target": "PC1"
+    },
+    {
+      "id": "link5",
+      "latency": 3,
+      "source": "Switch1",
+      "status": "active",
+      "target": "Server1"
+    },
+    {
+      "id": "link6",
+      "latency": 1,
+      "source": "Switch2",
+      "status": "active",
+      "target": "PC2"
+    },
+    {
+      "id": "link7",
+      "latency": 2,
+      "source": "Switch2",
+      "status": "active",
+      "target": "Printer1"
+    },
+    {
+      "id": "link8",
+      "latency": 2,
+      "source": "Switch2",
+      "status": "active",
+      "target": "AP1"
+    }
+  ],
+  "devices": [
+    {
+      "id": "Router1",
+      "name": "Router1",
+      "status": "active",
+      "type": "router"
+    },
+    {
+      "id": "Switch1",
+      "name": "Switch1",
+      "status": "active",
+      "type": "switch"
+    },
+    {
+      "id": "Server1",
+      "name": "Server1",
+      "status": "active",
+      "type": "server"
+    },
+    {
+      "id": "PC1",
+      "name": "PC1",
+      "status": "active",
+      "type": "computer"
+    },
+    {
+      "id": "PC2",
+      "name": "PC2",
+      "status": "active",
+      "type": "computer"
+    },
+    {
+      "id": "Printer1",
+      "name": "Printer1",
+      "status": "active",
+      "type": "printer"
+    },
+    {
+      "id": "AP1",
+      "name": "AP1",
+      "status": "active",
+      "type": "access-point"
+    },
+    {
+      "id": "Router2",
+      "name": "Router2",
+      "status": "active",
+      "type": "router"
+    },
+    {
+      "id": "Switch2",
+      "name": "Switch2",
+      "status": "active",
+      "type": "switch"
+    }
+  ],
+  "locationId": "college",
+  "locationName": "College",
+  "logs": []
+}

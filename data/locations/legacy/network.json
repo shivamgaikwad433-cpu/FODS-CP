@@ -1,0 +1,100 @@
+{
+  "connections": [
+    {
+      "id": "link1",
+      "latency": 5,
+      "source": "Router1",
+      "status": "active",
+      "target": "Switch1"
+    },
+    {
+      "id": "link2",
+      "latency": 7,
+      "source": "Router1",
+      "status": "active",
+      "target": "Switch2"
+    },
+    {
+      "id": "link3",
+      "latency": 2,
+      "source": "Switch1",
+      "status": "active",
+      "target": "Server1"
+    },
+    {
+      "id": "link4",
+      "latency": 4,
+      "source": "Switch2",
+      "status": "active",
+      "target": "Server1"
+    },
+    {
+      "id": "link5",
+      "latency": 3,
+      "source": "Switch2",
+      "status": "active",
+      "target": "Switch3"
+    },
+    {
+      "id": "link6",
+      "latency": 1,
+      "source": "Switch3",
+      "status": "active",
+      "target": "PC1"
+    },
+    {
+      "id": "link7",
+      "latency": 1,
+      "source": "Switch3",
+      "status": "active",
+      "target": "PC2"
+    }
+  ],
+  "devices": [
+    {
+      "id": "Router1",
+      "name": "Router1",
+      "status": "active",
+      "type": "router"
+    },
+    {
+      "id": "Switch1",
+      "name": "Switch1",
+      "status": "active",
+      "type": "switch"
+    },
+    {
+      "id": "Switch2",
+      "name": "Switch2",
+      "status": "active",
+      "type": "switch"
+    },
+    {
+      "id": "Server1",
+      "name": "Server1",
+      "status": "active",
+      "type": "server"
+    },
+    {
+      "id": "Switch3",
+      "name": "Switch3",
+      "status": "active",
+      "type": "switch"
+    },
+    {
+      "id": "PC1",
+      "name": "PC1",
+      "status": "active",
+      "type": "computer"
+    },
+    {
+      "id": "PC2",
+      "name": "PC2",
+      "status": "active",
+      "type": "computer"
+    }
+  ],
+  "locationId": "legacy",
+  "locationName": "Legacy Network",
+  "logs": []
+}

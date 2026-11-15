@@ -1,0 +1,156 @@
+{
+  "connections": [
+    {
+      "id": "link1",
+      "latency": 2,
+      "source": "Router1",
+      "status": "active",
+      "target": "Switch1"
+    },
+    {
+      "id": "link2",
+      "latency": 1,
+      "source": "Switch1",
+      "status": "active",
+      "target": "PC1"
+    },
+    {
+      "id": "link3",
+      "latency": 1,
+      "source": "Switch1",
+      "status": "active",
+      "target": "PC2"
+    },
+    {
+      "id": "link4",
+      "latency": 3,
+      "source": "Switch1",
+      "status": "active",
+      "target": "Server1"
+    },
+    {
+      "id": "link5",
+      "latency": 2,
+      "source": "Switch1",
+      "status": "active",
+      "target": "Printer1"
+    },
+    {
+      "id": "link6",
+      "latency": 2,
+      "source": "Router1",
+      "status": "active",
+      "target": "AP1"
+    }
+  ],
+  "devices": [
+    {
+      "id": "Router1",
+      "name": "Router1",
+      "status": "active",
+      "type": "router"
+    },
+    {
+      "id": "Switch1",
+      "name": "Switch1",
+      "status": "active",
+      "type": "switch"
+    },
+    {
+      "id": "Server1",
+      "name": "Server1",
+      "status": "active",
+      "type": "server"
+    },
+    {
+      "id": "PC1",
+      "name": "PC1",
+      "status": "active",
+      "type": "computer"
+    },
+    {
+      "id": "PC2",
+      "name": "PC2",
+      "status": "active",
+      "type": "computer"
+    },
+    {
+      "id": "Printer1",
+      "name": "Printer1",
+      "status": "failed",
+      "type": "printer"
+    },
+    {
+      "id": "AP1",
+      "name": "AP1",
+      "status": "active",
+      "type": "access-point"
+    },
+    {
+      "id": "lab1",
+      "name": "Lab1",
+      "status": "active",
+      "type": "switch"
+    }
+  ],
+  "locationId": "school",
+  "locationName": "School",
+  "logs": [
+    {
+      "description": "Added switch Lab1",
+      "id": 1,
+      "status": "success",
+      "target": "lab1",
+      "timestamp": "2026-11-14T09:13:58",
+      "type": "device-added"
+    },
+    {
+      "description": "All failures restored",
+      "id": 2,
+      "status": "success",
+      "target": "*",
+      "timestamp": "2026-11-14T09:14:13",
+      "type": "restored-all"
+    },
+    {
+      "description": "Failed Switch1",
+      "id": 3,
+      "status": "success",
+      "target": "Switch1",
+      "timestamp": "2026-11-14T09:14:28",
+      "type": "device-failed"
+    },
+    {
+      "description": "Failed Printer1",
+      "id": 4,
+      "status": "success",
+      "target": "Printer1",
+      "timestamp": "2026-11-14T09:17:02",
+      "type": "device-failed"
+    },
+    {
+      "description": "All failures restored",
+      "id": 5,
+      "status": "success",
+      "target": "*",
+      "timestamp": "2026-11-15T10:17:07",
+      "type": "restored-all"
+    },
+    {
+      "description": "All failures restored",
+      "id": 6,
+      "status": "success",
+      "target": "*",
+      "timestamp": "2026-11-15T10:17:07",
+      "type": "restored-all"
+    },
+    {
+      "description": "Failed Printer1",
+      "id": 7,
+      "status": "success",
+      "target": "Printer1",
+      "timestamp": "2026-11-15T10:55:29",
+      "type": "device-failed"
+    }
+  ]
+}

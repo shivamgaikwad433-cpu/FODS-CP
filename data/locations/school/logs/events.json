@@ -1,0 +1,58 @@
+[
+  {
+    "description": "Added switch Lab1",
+    "id": 1,
+    "status": "success",
+    "target": "lab1",
+    "timestamp": "2026-11-14T09:13:58",
+    "type": "device-added"
+  },
+  {
+    "description": "All failures restored",
+    "id": 2,
+    "status": "success",
+    "target": "*",
+    "timestamp": "2026-11-14T09:14:13",
+    "type": "restored-all"
+  },
+  {
+    "description": "Failed Switch1",
+    "id": 3,
+    "status": "success",
+    "target": "Switch1",
+    "timestamp": "2026-11-14T09:14:28",
+    "type": "device-failed"
+  },
+  {
+    "description": "Failed Printer1",
+    "id": 4,
+    "status": "success",
+    "target": "Printer1",
+    "timestamp": "2026-11-14T09:17:02",
+    "type": "device-failed"
+  },
+  {
+    "description": "All failures restored",
+    "id": 5,
+    "status": "success",
+    "target": "*",
+    "timestamp": "2026-11-15T10:17:07",
+    "type": "restored-all"
+  },
+  {
+    "description": "All failures restored",
+    "id": 6,
+    "status": "success",
+    "target": "*",
+    "timestamp": "2026-11-15T10:17:07",
+    "type": "restored-all"
+  },
+  {
+    "description": "Failed Printer1",
+    "id": 7,
+    "status": "success",
+    "target": "Printer1",
+    "timestamp": "2026-11-15T10:55:29",
+    "type": "device-failed"
+  }
+]
